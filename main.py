@@ -10,10 +10,12 @@ import random
 app = Client("my_account")
 
 
-@app.on_message(filters.command("tp", prefixes=".") & filters.me)
-def hack(_, msg):
+@app.on_message(filters.command("тп", prefixes=".") & filters.me)
+def tp(_, msg):
     perc = 0
-
+    intro ="Выступает Серёга Пират"
+    msg.reply_text(intro)
+    sleep(2)
     text = "🗙Моё тп отменено🗙"
     msg.edit(text)
     sleep(2)
@@ -32,5 +34,22 @@ def hack(_, msg):
     msg.edit("♾Навсегда♾")
     sleep(2)
 
+@app.on_message(filters.command("гуль", prefixes=".") & filters.me)
+
+def ghoul(_, msg):
+    perc = 0
+    k = 1000
+    x = 1000
+    text = f'{x}-7={x - 7}'
+    msg.edit(text)
+    while k > 10:
+        k -= 7
+        x -= 7
+        try:
+            msg.edit(f'{x}-7={x - 7}')
+            sleep(0.1)
+        except FloodWait as e:
+            sleep(e.x)
+    msg.edit("Я гуль")
 
 app.run()
