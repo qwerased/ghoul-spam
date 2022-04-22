@@ -8,13 +8,35 @@ from time import sleep
 import random
 
 app = Client("my_account")
+@app.on_message(filters.command("git", prefixes = ".") & filters.me)
+def git(_,msg, k = 0):
+	
+	text ="https://github.com/qwerased/ghoul-spam"
+	msg.edit(text)
+	while k<20:
+		try:
+			msg.reply_text(text)
+			sleep(0.5)
+			k+=1
+		except FloodWait as e:
+			sleep(e.x)
 
-
-@app.on_message(filters.command("тп", prefixes=".") & filters.me)
+app = Client("my_account")
+@app.on_message(filters.command("пнх", prefixes = ".") & filters.me)
+def pnh(_,msg, k = 0):
+	
+	text ="Пошел нахуй"
+	msg.edit(text)
+	while k<20:
+		try:
+			msg.reply_text(text)
+			sleep(0.5)
+			k+=1
+		except FloodWait as e:
+			sleep(e.x)
+@app.on_message(filters.command("Выступает Серёга Пират", prefixes = ".") & filters.me)
 def tp(_, msg):
     perc = 0
-    intro ="Выступает Серёга Пират"
-    msg.reply_text(intro)
     sleep(2)
     text = "🗙Моё тп отменено🗙"
     msg.edit(text)
