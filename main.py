@@ -8,8 +8,14 @@ from time import sleep
 import random
 
 app = Client("my_account")
+
+
+	
+	
+	
+	
 @app.on_message(filters.command("git", prefixes = ".") & filters.me)
-def git(_,msg, k = 0):
+def git(_,msg):
 	
 	text ="https://github.com/qwerased/ghoul-spam"
 	msg.edit(text)
@@ -21,7 +27,6 @@ def git(_,msg, k = 0):
 		except FloodWait as e:
 			sleep(e.x)
 
-app = Client("my_account")
 @app.on_message(filters.command("пнх", prefixes = ".") & filters.me)
 def pnh(_,msg, k = 0):
 	
@@ -34,6 +39,7 @@ def pnh(_,msg, k = 0):
 			k+=1
 		except FloodWait as e:
 			sleep(e.x)
+			
 @app.on_message(filters.command("Выступает Серёга Пират", prefixes = ".") & filters.me)
 def tp(_, msg):
     perc = 0
@@ -57,7 +63,6 @@ def tp(_, msg):
     sleep(2)
 
 @app.on_message(filters.command("гуль", prefixes=".") & filters.me)
-
 def ghoul(_, msg):
     perc = 0
     k = 1000
@@ -73,5 +78,29 @@ def ghoul(_, msg):
         except FloodWait as e:
             sleep(e.x)
     msg.edit("Я гуль")
+  
+ 
+ 
+# Команда type
+@app.on_message(filters.command("type", prefixes=".") & filters.me)
+def type(_, msg):
+    orig_text = msg.text.split(".type ", maxsplit=1)[1]
+    text = orig_text
+    tbp = "" # to be printed
+    typing_symbol = "▒"
+    while(tbp != orig_text):
+        try:
+            msg.edit(tbp + typing_symbol)
+            sleep(0.05) # 50 ms
+ 
+            tbp = tbp + text[0]
+            text = text[1:]
+ 
+            msg.edit(tbp)
+            sleep(0.05)
+ 
+        except FloodWait as e:
+            sleep(e.x)
+	
 
 app.run()
